@@ -1,7 +1,5 @@
 import React from 'react';
 
-import MessageInput from '@/components/MessageInput';
-
 import './Wrapper.scss';
 
 export const Wrapper: React.FC = ({ children }) => {
@@ -12,7 +10,6 @@ export const Wrapper: React.FC = ({ children }) => {
       </header>
       <section className='container'>
         {children}
-        <MessageInput />
       </section>
     </section>
   );
