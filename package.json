@@ -11,6 +11,16 @@
     "lint:print": "eslint ./src",
     "lint:fix": "eslint --fix ./src"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./**/*.{js,jsx,ts,tsx}": [
+      "npm run lint:fix"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
