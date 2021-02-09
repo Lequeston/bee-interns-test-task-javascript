@@ -1,0 +1,29 @@
+@import '@/styles/colors.scss';
+@import '@/styles/screens.scss';
+
+.message {
+  width: 100%;
+  display: flex;
+
+  .icon {
+    margin-right: 20px;
+  }
+
+  .body-user, .body-bot {
+    align-self: flex-start;
+
+    border-radius: 35px;
+    padding: 10px;
+
+    font-size: 1.2rem;
+    white-space: pre-wrap;
+  }
+
+  .body-user {
+    background-color: $yellow;
+  }
+
+  .body-bot {
+    background-color: $white;
+  }
+}

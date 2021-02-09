@@ -1,6 +1,6 @@
 import React from 'react';
 
-import _, { ReactComponent as ButtonSend } from '@/assets/send.svg';
+import { ReactComponent as ButtonSend } from '@/assets/send.svg';
 
 import './MessageInput.scss';
 

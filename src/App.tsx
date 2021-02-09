@@ -13,12 +13,15 @@ const App: React.FC = () => {
   const {
     setIsSend,
     inputText,
-    setInputText
+    setInputText,
+    messages
   } = useChat();
 
   return (
     <Wrapper>
-      <BoxMessages />
+      <BoxMessages
+        messages={messages}
+      />
       <MessageInput
         setIsSend={setIsSend}
         inputText={inputText}
