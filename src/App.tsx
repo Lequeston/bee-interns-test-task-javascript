@@ -9,24 +9,12 @@ import useChat from '@/hooks/useChat';
 import './App.scss';
 
 const App: React.FC = () => {
-
-  const {
-    setIsSend,
-    inputText,
-    setInputText,
-    messages
-  } = useChat();
+  const { setIsSend, inputText, setInputText, messages, isEntering } = useChat();
 
   return (
     <Wrapper>
-      <BoxMessages
-        messages={messages}
-      />
-      <MessageInput
-        setIsSend={setIsSend}
-        inputText={inputText}
-        setInputText={setInputText}
-      />
+      <BoxMessages messages={messages} isEntering={isEntering} />
+      <MessageInput setIsSend={setIsSend} inputText={inputText} setInputText={setInputText} />
     </Wrapper>
   );
 };

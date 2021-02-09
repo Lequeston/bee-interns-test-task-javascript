@@ -1,0 +1,17 @@
+@import '@/styles/colors.scss';
+
+.entering {
+  order: -1;
+  font-size: 2.0rem;
+}
+
+.entering:after {
+  content: '.';
+  color: $white;
+  animation: entering 1s ease alternate infinite;
+}
+
+@keyframes entering {
+  60%  { text-shadow: 0.35em 0 0 currentColor; }
+  100% { text-shadow: 0.35em 0 0 currentColor, 0.75em 0 0 currentColor; }
+}
