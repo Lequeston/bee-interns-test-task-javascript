@@ -3,3 +3,4 @@ dist
 remote
 config/private.json
 sh.exe.stackdump
+node_modules
