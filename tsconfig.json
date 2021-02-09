@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+		"baseUrl": "./src",
+		"target": "es5",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["./*"],
+      "@components/*": ["./components/*"],
+      "@assets/*": ["./assets/*"],
+      "@config/*": ["./config/*"]
+    }
+	},
+	"exclude": ["node_modules", "dist"] 
+}

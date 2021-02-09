@@ -1,0 +1,5 @@
+yarn-error.log
+dist
+remote
+config/private.json
+sh.exe.stackdump
