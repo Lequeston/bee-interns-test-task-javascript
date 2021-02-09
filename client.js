@@ -2900,10 +2900,12 @@ var App = function App() {
       setIsSend = _useChat.setIsSend,
       inputText = _useChat.inputText,
       setInputText = _useChat.setInputText,
-      messages = _useChat.messages;
+      messages = _useChat.messages,
+      isEntering = _useChat.isEntering;
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Wrapper__WEBPACK_IMPORTED_MODULE_1__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_BoxMessages__WEBPACK_IMPORTED_MODULE_3__.default, {
-    messages: messages
+    messages: messages,
+    isEntering: isEntering
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_MessageInput__WEBPACK_IMPORTED_MODULE_2__.default, {
     setIsSend: setIsSend,
     inputText: inputText,
@@ -2911,7 +2913,7 @@ var App = function App() {
   }));
 };
 
-_s(App, "vQX5MxTAELMToZZyxMMUYcPDzn8=", false, function () {
+_s(App, "X2yHxldCx1CNqP71Hg+0tNu9cpg=", false, function () {
   return [_hooks_useChat__WEBPACK_IMPORTED_MODULE_4__.default];
 });
 
@@ -3012,6 +3014,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
 /* harmony import */ var _BoxMessages_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BoxMessages.scss */ "./components/BoxMessages/BoxMessages.scss");
 /* harmony import */ var _components_Message__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Message */ "./components/Message/index.tsx");
+/* harmony import */ var _components_Entering__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Entering */ "./components/Entering/index.tsx");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 /* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ../node_modules/react-refresh/runtime.js */ "../node_modules/react-refresh/runtime.js");
@@ -3020,8 +3023,10 @@ __webpack_require__.$Refresh$.setup(module.id);
 
 
 
+
 var BoxMessages = function BoxMessages(_ref) {
-  var messages = _ref.messages;
+  var messages = _ref.messages,
+      isEntering = _ref.isEntering;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "box-messages"
   }, messages.map(function (_ref2, index) {
@@ -3032,6 +3037,8 @@ var BoxMessages = function BoxMessages(_ref) {
       body: body,
       key: index
     });
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Entering__WEBPACK_IMPORTED_MODULE_3__.default, {
+    isEntering: isEntering
   }));
 };
 _c = BoxMessages;
@@ -3135,6 +3142,210 @@ __webpack_require__.$Refresh$.setup(module.id);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_BoxMessages__WEBPACK_IMPORTED_MODULE_0__.BoxMessages);
+
+const currentExports = __react_refresh_utils__.getModuleExports(module.id);
+__react_refresh_utils__.registerExportsForReactRefresh(currentExports, module.id);
+
+if (true) {
+  const isHotUpdate = !!module.hot.data;
+  const prevExports = isHotUpdate ? module.hot.data.prevExports : null;
+
+  if (__react_refresh_utils__.isReactRefreshBoundary(currentExports)) {
+    module.hot.dispose(
+      /**
+       * A callback to performs a full refresh if React has unrecoverable errors,
+       * and also caches the to-be-disposed module.
+       * @param {*} data A hot module data object from Webpack HMR.
+       * @returns {void}
+       */
+      function hotDisposeCallback(data) {
+        // We have to mutate the data object to get data registered and cached
+        data.prevExports = currentExports;
+      }
+    );
+    module.hot.accept(
+      /**
+       * An error handler to allow self-recovering behaviours.
+       * @param {Error} error An error occurred during evaluation of a module.
+       * @returns {void}
+       */
+      function hotErrorHandler(error) {
+        if (
+          typeof __react_refresh_error_overlay__ !== 'undefined' &&
+          __react_refresh_error_overlay__
+        ) {
+          __react_refresh_error_overlay__.handleRuntimeError(error);
+        }
+
+        if (typeof __react_refresh_test__ !== 'undefined' && __react_refresh_test__) {
+          if (window.onHotAcceptError) {
+            window.onHotAcceptError(error.message);
+          }
+        }
+
+        __webpack_require__.c[module.id].hot.accept(hotErrorHandler);
+      }
+    );
+
+    if (isHotUpdate) {
+      if (
+        __react_refresh_utils__.isReactRefreshBoundary(prevExports) &&
+        __react_refresh_utils__.shouldInvalidateReactRefreshBoundary(prevExports, currentExports)
+      ) {
+        module.hot.invalidate();
+      } else {
+        __react_refresh_utils__.enqueueUpdate(
+          /**
+           * A function to dismiss the error overlay after performing React refresh.
+           * @returns {void}
+           */
+          function updateCallback() {
+            if (
+              typeof __react_refresh_error_overlay__ !== 'undefined' &&
+              __react_refresh_error_overlay__
+            ) {
+              __react_refresh_error_overlay__.clearRuntimeErrors();
+            }
+          }
+        );
+      }
+    }
+  } else {
+    if (isHotUpdate && __react_refresh_utils__.isReactRefreshBoundary(prevExports)) {
+      module.hot.invalidate();
+    }
+  }
+}
+
+/***/ }),
+
+/***/ "./components/Entering/Entering.tsx":
+/*!******************************************!*\
+  !*** ./components/Entering/Entering.tsx ***!
+  \******************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Entering": () => (/* binding */ Entering)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var _Entering_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Entering.scss */ "./components/Entering/Entering.scss");
+/* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
+/* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ../node_modules/react-refresh/runtime.js */ "../node_modules/react-refresh/runtime.js");
+__webpack_require__.$Refresh$.setup(module.id);
+
+
+
+var Entering = function Entering(_ref) {
+  var isEntering = _ref.isEntering;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, isEntering ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "entering"
+  }) : undefined);
+};
+_c = Entering;
+
+var _c;
+
+__webpack_require__.$Refresh$.register(_c, "Entering");
+
+const currentExports = __react_refresh_utils__.getModuleExports(module.id);
+__react_refresh_utils__.registerExportsForReactRefresh(currentExports, module.id);
+
+if (true) {
+  const isHotUpdate = !!module.hot.data;
+  const prevExports = isHotUpdate ? module.hot.data.prevExports : null;
+
+  if (__react_refresh_utils__.isReactRefreshBoundary(currentExports)) {
+    module.hot.dispose(
+      /**
+       * A callback to performs a full refresh if React has unrecoverable errors,
+       * and also caches the to-be-disposed module.
+       * @param {*} data A hot module data object from Webpack HMR.
+       * @returns {void}
+       */
+      function hotDisposeCallback(data) {
+        // We have to mutate the data object to get data registered and cached
+        data.prevExports = currentExports;
+      }
+    );
+    module.hot.accept(
+      /**
+       * An error handler to allow self-recovering behaviours.
+       * @param {Error} error An error occurred during evaluation of a module.
+       * @returns {void}
+       */
+      function hotErrorHandler(error) {
+        if (
+          typeof __react_refresh_error_overlay__ !== 'undefined' &&
+          __react_refresh_error_overlay__
+        ) {
+          __react_refresh_error_overlay__.handleRuntimeError(error);
+        }
+
+        if (typeof __react_refresh_test__ !== 'undefined' && __react_refresh_test__) {
+          if (window.onHotAcceptError) {
+            window.onHotAcceptError(error.message);
+          }
+        }
+
+        __webpack_require__.c[module.id].hot.accept(hotErrorHandler);
+      }
+    );
+
+    if (isHotUpdate) {
+      if (
+        __react_refresh_utils__.isReactRefreshBoundary(prevExports) &&
+        __react_refresh_utils__.shouldInvalidateReactRefreshBoundary(prevExports, currentExports)
+      ) {
+        module.hot.invalidate();
+      } else {
+        __react_refresh_utils__.enqueueUpdate(
+          /**
+           * A function to dismiss the error overlay after performing React refresh.
+           * @returns {void}
+           */
+          function updateCallback() {
+            if (
+              typeof __react_refresh_error_overlay__ !== 'undefined' &&
+              __react_refresh_error_overlay__
+            ) {
+              __react_refresh_error_overlay__.clearRuntimeErrors();
+            }
+          }
+        );
+      }
+    }
+  } else {
+    if (isHotUpdate && __react_refresh_utils__.isReactRefreshBoundary(prevExports)) {
+      module.hot.invalidate();
+    }
+  }
+}
+
+/***/ }),
+
+/***/ "./components/Entering/index.tsx":
+/*!***************************************!*\
+  !*** ./components/Entering/index.tsx ***!
+  \***************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Entering__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Entering */ "./components/Entering/Entering.tsx");
+/* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
+/* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ../node_modules/react-refresh/runtime.js */ "../node_modules/react-refresh/runtime.js");
+__webpack_require__.$Refresh$.setup(module.id);
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Entering__WEBPACK_IMPORTED_MODULE_0__.Entering);
 
 const currentExports = __react_refresh_utils__.getModuleExports(module.id);
 __react_refresh_utils__.registerExportsForReactRefresh(currentExports, module.id);
@@ -4029,6 +4240,16 @@ var useChat = function useChat() {
       isSend = _useState8[0],
       setIsSend = _useState8[1];
 
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      isEntering = _useState10[0],
+      setIsEntering = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined),
+      _useState12 = _slicedToArray(_useState11, 2),
+      timerId = _useState12[0],
+      setTimerId = _useState12[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var json = localStorage.getItem(CHAT_SAVE_LOCAL_STORAGE);
     console.log(json);
@@ -4040,6 +4261,21 @@ var useChat = function useChat() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     localStorage.setItem(CHAT_SAVE_LOCAL_STORAGE, JSON.stringify(messages));
   }, [messages]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (inputText) {
+      if (timerId) {
+        clearTimeout(timerId);
+        setTimerId(undefined);
+      }
+
+      setIsEntering(true);
+      var id = setTimeout(function () {
+        setIsEntering(false);
+        setTimerId(undefined);
+      }, 2000);
+      setTimerId(id);
+    }
+  }, [inputText]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var botAnswer = function botAnswer() {
       switch (newMessage) {
@@ -4071,7 +4307,8 @@ var useChat = function useChat() {
     setIsSend: setIsSend,
     inputText: inputText,
     setInputText: setInputText,
-    messages: messages
+    messages: messages,
+    isEntering: isEntering
   };
 };
 
@@ -4296,7 +4533,34 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".box-messages {\n  width: 100%;\n  height: 100%;\n  overflow-y: auto;\n  display: flex;\n  flex-direction: column-reverse; }\n", "",{"version":3,"sources":["webpack://./components/BoxMessages/BoxMessages.scss"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EAEZ,gBAAgB;EAEhB,aAAa;EACb,8BAA8B,EAAA","sourcesContent":[".box-messages {\n  width: 100%;\n  height: 100%;\n\n  overflow-y: auto;\n  \n  display: flex;\n  flex-direction: column-reverse;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".box-messages {\n  width: 100%;\n  height: 100%;\n  overflow-y: auto;\n  overflow-x: hidden;\n  display: flex;\n  flex-direction: column-reverse; }\n", "",{"version":3,"sources":["webpack://./components/BoxMessages/BoxMessages.scss"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,YAAY;EAEZ,gBAAgB;EAChB,kBAAkB;EAElB,aAAa;EACb,8BAA8B,EAAA","sourcesContent":[".box-messages {\n  width: 100%;\n  height: 100%;\n\n  overflow-y: auto;\n  overflow-x: hidden;\n  \n  display: flex;\n  flex-direction: column-reverse;\n}\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./components/Entering/Entering.scss":
+/*!**************************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./components/Entering/Entering.scss ***!
+  \**************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "../node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".entering {\n  order: -1;\n  font-size: 2.0rem; }\n\n.entering:after {\n  content: '.';\n  color: #F1F0F0;\n  animation: entering 1s ease alternate infinite; }\n\n@keyframes entering {\n  60% {\n    text-shadow: 0.35em 0 0 currentColor; }\n  100% {\n    text-shadow: 0.35em 0 0 currentColor, 0.75em 0 0 currentColor; } }\n", "",{"version":3,"sources":["webpack://./components/Entering/Entering.scss","webpack://./styles/colors.scss"],"names":[],"mappings":"AAEA;EACE,SAAS;EACT,iBAAiB,EAAA;;AAGnB;EACE,YAAY;EACZ,cCRa;EDSb,8CAA8C,EAAA;;AAGhD;EACE;IAAO,oCAAoC,EAAA;EAC3C;IAAO,6DAA6D,EAAA,EAAA","sourcesContent":["@import '@/styles/colors.scss';\n\n.entering {\n  order: -1;\n  font-size: 2.0rem;\n}\n\n.entering:after {\n  content: '.';\n  color: $white;\n  animation: entering 1s ease alternate infinite;\n}\n\n@keyframes entering {\n  60%  { text-shadow: 0.35em 0 0 currentColor; }\n  100% { text-shadow: 0.35em 0 0 currentColor, 0.75em 0 0 currentColor; }\n}\n","$black: #282828;\n$white: #F1F0F0;\n$yellow: #F9C35B;\n$gray: #929292;\n\n$border-color: #EDEDED;\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4323,7 +4587,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".message {\n  width: 100%;\n  display: flex; }\n  .message .icon {\n    margin-right: 20px; }\n  .message .body-user, .message .body-bot {\n    align-self: flex-start;\n    border-radius: 35px;\n    padding: 10px;\n    font-size: 1.2rem;\n    white-space: pre-wrap; }\n  .message .body-user {\n    background-color: #F9C35B; }\n  .message .body-bot {\n    background-color: #F1F0F0; }\n", "",{"version":3,"sources":["webpack://./components/Message/Message.scss","webpack://./styles/colors.scss"],"names":[],"mappings":"AAGA;EACE,WAAW;EACX,aAAa,EAAA;EAFf;IAKI,kBAAkB,EAAA;EALtB;IASI,sBAAsB;IAEtB,mBAAmB;IACnB,aAAa;IAEb,iBAAiB;IACjB,qBAAqB,EAAA;EAfzB;IAmBI,yBCpBY,EAAA;EDChB;IAuBI,yBCzBW,EAAA","sourcesContent":["@import '@/styles/colors.scss';\n@import '@/styles/screens.scss';\n\n.message {\n  width: 100%;\n  display: flex;\n\n  .icon {\n    margin-right: 20px;\n  }\n\n  .body-user, .body-bot {\n    align-self: flex-start;\n\n    border-radius: 35px;\n    padding: 10px;\n\n    font-size: 1.2rem;\n    white-space: pre-wrap;\n  }\n\n  .body-user {\n    background-color: $yellow;\n  }\n\n  .body-bot {\n    background-color: $white;\n  }\n}\n","$black: #282828;\n$white: #F1F0F0;\n$yellow: #F9C35B;\n$gray: #929292;\n\n$border-color: #EDEDED;\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".message {\n  width: 100%;\n  display: flex;\n  margin-bottom: 20px; }\n  .message .icon {\n    margin-right: 20px; }\n  .message .body-user, .message .body-bot {\n    align-self: flex-start;\n    border-radius: 35px;\n    padding: 10px;\n    font-size: 1.2rem;\n    white-space: pre-wrap;\n    overflow-wrap: anywhere; }\n  .message .body-user {\n    background-color: #F9C35B; }\n  .message .body-bot {\n    background-color: #F1F0F0; }\n", "",{"version":3,"sources":["webpack://./components/Message/Message.scss","webpack://./styles/colors.scss"],"names":[],"mappings":"AAGA;EACE,WAAW;EACX,aAAa;EACb,mBAAmB,EAAA;EAHrB;IAMI,kBAAkB,EAAA;EANtB;IAUI,sBAAsB;IAEtB,mBAAmB;IACnB,aAAa;IAEb,iBAAiB;IACjB,qBAAqB;IACrB,uBAAuB,EAAA;EAjB3B;IAqBI,yBCtBY,EAAA;EDChB;IAyBI,yBC3BW,EAAA","sourcesContent":["@import '@/styles/colors.scss';\n@import '@/styles/screens.scss';\n\n.message {\n  width: 100%;\n  display: flex;\n  margin-bottom: 20px;\n\n  .icon {\n    margin-right: 20px;\n  }\n\n  .body-user, .body-bot {\n    align-self: flex-start;\n\n    border-radius: 35px;\n    padding: 10px;\n\n    font-size: 1.2rem;\n    white-space: pre-wrap;\n    overflow-wrap: anywhere;\n  }\n\n  .body-user {\n    background-color: $yellow;\n  }\n\n  .body-bot {\n    background-color: $white;\n  }\n}\n","$black: #282828;\n$white: #F1F0F0;\n$yellow: #F9C35B;\n$gray: #929292;\n\n$border-color: #EDEDED;\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -36461,6 +36725,92 @@ if (true) {
 
 /***/ }),
 
+/***/ "./components/Entering/Entering.scss":
+/*!*******************************************!*\
+  !*** ./components/Entering/Entering.scss ***!
+  \*******************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_Entering_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./Entering.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./components/Entering/Entering.scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_Entering_scss__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+if (true) {
+  if (!_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_Entering_scss__WEBPACK_IMPORTED_MODULE_1__.default.locals || module.hot.invalidate) {
+    var isEqualLocals = function isEqualLocals(a, b, isNamedExport) {
+  if (!a && b || a && !b) {
+    return false;
+  }
+
+  var p;
+
+  for (p in a) {
+    if (isNamedExport && p === 'default') {
+      // eslint-disable-next-line no-continue
+      continue;
+    }
+
+    if (a[p] !== b[p]) {
+      return false;
+    }
+  }
+
+  for (p in b) {
+    if (isNamedExport && p === 'default') {
+      // eslint-disable-next-line no-continue
+      continue;
+    }
+
+    if (!a[p]) {
+      return false;
+    }
+  }
+
+  return true;
+};
+    var oldLocals = _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_Entering_scss__WEBPACK_IMPORTED_MODULE_1__.default.locals;
+
+    module.hot.accept(
+      /*! !!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./Entering.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./components/Entering/Entering.scss",
+      __WEBPACK_OUTDATED_DEPENDENCIES__ => { /* harmony import */ _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_Entering_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./Entering.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./components/Entering/Entering.scss");
+(function () {
+        if (!isEqualLocals(oldLocals, _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_Entering_scss__WEBPACK_IMPORTED_MODULE_1__.default.locals, undefined)) {
+                module.hot.invalidate();
+
+                return;
+              }
+
+              oldLocals = _node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_Entering_scss__WEBPACK_IMPORTED_MODULE_1__.default.locals;
+
+              update(_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_Entering_scss__WEBPACK_IMPORTED_MODULE_1__.default);
+      })(__WEBPACK_OUTDATED_DEPENDENCIES__); }
+    )
+  }
+
+  module.hot.dispose(function() {
+    update();
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_node_modules_sass_loader_dist_cjs_js_Entering_scss__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./components/Message/Message.scss":
 /*!*****************************************!*\
   !*** ./components/Message/Message.scss ***!
@@ -37076,7 +37426,7 @@ module.exports = function (list, options) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("f77373f49d27d717af45")
+/******/ 		__webpack_require__.h = () => ("b1a5944c7af44193d3e2")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
