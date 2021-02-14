@@ -1,3 +1,3 @@
-import { BoxMessages } from "./BoxMessages";
+import { BoxMessages } from './BoxMessages';
 
 export default BoxMessages;

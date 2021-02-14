@@ -11,16 +11,8 @@ export const Message: React.FC<MessageType> = ({ type, body }) => {
   const isUser = type === USER_TYPE;
   return (
     <span className='message'>
-      <i className='icon'>
-      {
-        (isUser) ?
-          <UserIcon /> :
-          <BotIcon />
-      }
-      </i>
-      <p className={isUser ? 'body-user' : 'body-bot'}>
-        { body }
-      </p>
+      <i className='icon'>{isUser ? <UserIcon /> : <BotIcon />}</i>
+      <p className={isUser ? 'body-user' : 'body-bot'}>{body}</p>
     </span>
-  )
-}
+  );
+};
