@@ -1,6 +1,6 @@
 import { CommandsType, NumberMathTypes } from '@/types';
 
-import { notKnowCommandBody, notStartChat } from '@/constants';
+import { notKnowCommandBody, notMathCommand, notStartChat } from '@/constants';
 
 // парсинг команды
 export const commandParser = (fullCommand: string): CommandsType => {
@@ -8,6 +8,25 @@ export const commandParser = (fullCommand: string): CommandsType => {
   return {
     command: words[0],
     args: words.slice(1)
+  };
+};
+
+// оберточная функция ошибок
+export const errorsMessageWrap = (
+  isStart: boolean,
+  numbers: NumberMathTypes,
+  setBodyMessage: React.Dispatch<React.SetStateAction<string | undefined>>,
+  setNumbers: React.Dispatch<React.SetStateAction<NumberMathTypes | undefined>>
+) => {
+  return (commandFunction: () => void) => {
+    if (isStart && !numbers) {
+      commandFunction();
+    } else if (numbers) {
+      setBodyMessage(notMathCommand);
+      setNumbers(undefined);
+    } else {
+      setBodyMessage(notStartChat);
+    }
   };
 };
 
@@ -27,54 +46,37 @@ export const commandStart = (
 
 // команда /stop
 export const commandStop = (
-  isStart: boolean,
   setIsStart: React.Dispatch<React.SetStateAction<boolean>>,
   setBodyMessage: React.Dispatch<React.SetStateAction<string | undefined>>
 ) => {
-  if (isStart) {
-    setIsStart(false);
-    setBodyMessage('Всего доброго, если хочешь поговорить пиши /start');
-  } else {
-    setBodyMessage(notStartChat);
-  }
+  setIsStart(false);
+  setBodyMessage('Всего доброго, если хочешь поговорить пиши /start');
 };
 
 // команда /name
 export const commandName = (
-  isStart: boolean,
   name: string,
   setBodyMessage: React.Dispatch<React.SetStateAction<string | undefined>>
 ) => {
-  if (isStart) {
-    const message =
-      'Привет ' +
-      name +
-      ', приятно познакомится. Я умею считать, введи числа которые надо посчитать';
-    setBodyMessage(message);
-  } else {
-    setBodyMessage(notStartChat);
-  }
+  const message =
+    'Привет ' + name + ', приятно познакомится. Я умею считать, введи числа которые надо посчитать';
+  setBodyMessage(message);
 };
 
 //команда /number
 export const commandNumber = (
-  isStart: boolean,
   firstNumberString: string,
   secondNumberString: string,
   setBodyMessage: React.Dispatch<React.SetStateAction<string | undefined>>,
   setNumbers: React.Dispatch<React.SetStateAction<NumberMathTypes | undefined>>
 ) => {
-  if (isStart) {
-    const first = parseInt(firstNumberString, 10);
-    const second = parseInt(secondNumberString, 10);
-    setNumbers({
-      first,
-      second
-    });
-    setBodyMessage('Введите одну из следующих команд: -, +, *, /');
-  } else {
-    setBodyMessage(notStartChat);
-  }
+  const first = parseInt(firstNumberString, 10);
+  const second = parseInt(secondNumberString, 10);
+  setNumbers({
+    first,
+    second
+  });
+  setBodyMessage('Введите одну из следующих команд: -, +, *, /');
 };
 
 // команды для мат действий
@@ -94,18 +96,14 @@ export const commandMathAction = (
     } else {
       setBodyMessage(notKnowCommandBody);
     }
-  } else {
+  } else if (!numbers) {
     setBodyMessage(notStartChat);
   }
 };
+
 // для не запланированного функционала
 export const notStart = (
-  isStart: boolean,
   setBodyMessage: React.Dispatch<React.SetStateAction<string | undefined>>
 ) => {
-  if (isStart) {
-    setBodyMessage(notKnowCommandBody);
-  } else {
-    setBodyMessage(notStartChat);
-  }
+  setBodyMessage(notKnowCommandBody);
 };

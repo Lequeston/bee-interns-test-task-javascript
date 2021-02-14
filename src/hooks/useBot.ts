@@ -7,6 +7,7 @@ import {
   commandParser,
   commandStart,
   commandStop,
+  errorsMessageWrap,
   notStart
 } from '@/model/commands';
 import {
@@ -29,18 +30,27 @@ const useBot = () => {
     if (command) {
       const parseCommand = commandParser(command);
       const { args } = parseCommand;
+
+      const functionWrap = errorsMessageWrap(isStart, numbers, setBodyMessage, setNumbers);
+
       switch (parseCommand.command) {
         case START_WORD_COMMAND:
           commandStart(isStart, setIsStart, setBodyMessage);
           break;
         case STOP_WORD_COMMAND:
-          commandStop(isStart, setIsStart, setBodyMessage);
+          functionWrap(() => {
+            commandStop(setIsStart, setBodyMessage);
+          });
           break;
         case NAME_WORD_COMMAND:
-          commandName(isStart, args[0], setBodyMessage);
+          functionWrap(() => {
+            commandName(args[0], setBodyMessage);
+          });
           break;
         case NUMBER_WORD_COMMAND:
-          commandNumber(isStart, args[0], args[1], setBodyMessage, setNumbers);
+          functionWrap(() => {
+            commandNumber(args[0], args[1], setBodyMessage, setNumbers);
+          });
           break;
         case MATH_WORDS_COMMANDS[0]:
         case MATH_WORDS_COMMANDS[1]:
@@ -49,7 +59,9 @@ const useBot = () => {
           commandMathAction(numbers, isStart, parseCommand.command, setBodyMessage, setNumbers);
           break;
         default:
-          notStart(isStart, setBodyMessage);
+          functionWrap(() => {
+            notStart(setBodyMessage);
+          });
           break;
       }
     }
