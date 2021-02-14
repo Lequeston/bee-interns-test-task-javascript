@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
+  "browserslist": "> 0.25%, not dead",
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development MODE_ENV=build webpack --config config/webpack.config.js",
     "build:production": "cross-env NODE_ENV=production MODE_ENV=build webpack --config config/webpack.config.js",
@@ -17,7 +18,7 @@
     }
   },
   "lint-staged": {
-    "./**/*.{js,jsx,ts,tsx}": [
+    "./src/**/*.{js,jsx,ts,tsx}": [
       "npm run lint:fix",
       "git add ."
     ]
@@ -67,6 +68,7 @@
     "webpack-dev-server": "^3.11.1"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }
