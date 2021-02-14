@@ -12,3 +12,8 @@ export type CommandsType = {
   command: string;
   args: string[];
 };
+
+export type NumberMathTypes = {
+  first: number;
+  second: number;
+};
