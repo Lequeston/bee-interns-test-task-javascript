@@ -8,9 +8,7 @@ export const Wrapper: React.FC = ({ children }) => {
       <header className='header'>
         <h1 className='title'>Чат-бот</h1>
       </header>
-      <section className='container'>
-        {children}
-      </section>
+      <section className='container'>{children}</section>
     </section>
   );
 };
