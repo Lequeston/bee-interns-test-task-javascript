@@ -7,7 +7,6 @@ import {
   commandParser,
   commandStart,
   commandStop,
-  commandWeather,
   errorsMessageWrap,
   notStart
 } from '@/model/commands';
@@ -16,8 +15,7 @@ import {
   NAME_WORD_COMMAND,
   NUMBER_WORD_COMMAND,
   START_WORD_COMMAND,
-  STOP_WORD_COMMAND,
-  WEATHER_WORD_COMMAND
+  STOP_WORD_COMMAND
 } from '@/constants';
 import { NumberMathTypes } from '@/types';
 
@@ -60,18 +58,12 @@ const useBot = () => {
         case MATH_WORDS_COMMANDS[3]:
           commandMathAction(numbers, isStart, parseCommand.command, setBodyMessage, setNumbers);
           break;
-        case WEATHER_WORD_COMMAND:
-          functionWrap(() => {
-            commandWeather(setBodyMessage);
-          });
-          break;
         default:
           functionWrap(() => {
             notStart(setBodyMessage);
           });
           break;
       }
-      setCommand(undefined);
     }
   }, [command]);
 

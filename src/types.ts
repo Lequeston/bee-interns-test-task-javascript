@@ -17,8 +17,3 @@ export type NumberMathTypes = {
   first: number;
   second: number;
 };
-
-export type PositionType = {
-  latitude: number;
-  longitude: number;
-};
