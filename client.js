@@ -4177,6 +4177,299 @@ if (true) {
 
 /***/ }),
 
+/***/ "./constants.ts":
+/*!**********************!*\
+  !*** ./constants.ts ***!
+  \**********************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "notKnowCommandBody": () => (/* binding */ notKnowCommandBody),
+/* harmony export */   "notStartChat": () => (/* binding */ notStartChat),
+/* harmony export */   "notMathCommand": () => (/* binding */ notMathCommand),
+/* harmony export */   "START_WORD_COMMAND": () => (/* binding */ START_WORD_COMMAND),
+/* harmony export */   "STOP_WORD_COMMAND": () => (/* binding */ STOP_WORD_COMMAND),
+/* harmony export */   "NAME_WORD_COMMAND": () => (/* binding */ NAME_WORD_COMMAND),
+/* harmony export */   "NUMBER_WORD_COMMAND": () => (/* binding */ NUMBER_WORD_COMMAND),
+/* harmony export */   "MATH_WORDS_COMMANDS": () => (/* binding */ MATH_WORDS_COMMANDS)
+/* harmony export */ });
+/* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
+/* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ../node_modules/react-refresh/runtime.js */ "../node_modules/react-refresh/runtime.js");
+__webpack_require__.$Refresh$.setup(module.id);
+
+var notKnowCommandBody = 'Я не понимаю, введите другую команду!';
+var notStartChat = 'Введите команду /start, для начала общения';
+var notMathCommand = 'Вы не ввели математическое действие';
+var START_WORD_COMMAND = '/start';
+var STOP_WORD_COMMAND = '/stop';
+var NAME_WORD_COMMAND = '/name:';
+var NUMBER_WORD_COMMAND = '/number:';
+var MATH_WORDS_COMMANDS = ['-', '+', '*', '/'];
+
+const currentExports = __react_refresh_utils__.getModuleExports(module.id);
+__react_refresh_utils__.registerExportsForReactRefresh(currentExports, module.id);
+
+if (true) {
+  const isHotUpdate = !!module.hot.data;
+  const prevExports = isHotUpdate ? module.hot.data.prevExports : null;
+
+  if (__react_refresh_utils__.isReactRefreshBoundary(currentExports)) {
+    module.hot.dispose(
+      /**
+       * A callback to performs a full refresh if React has unrecoverable errors,
+       * and also caches the to-be-disposed module.
+       * @param {*} data A hot module data object from Webpack HMR.
+       * @returns {void}
+       */
+      function hotDisposeCallback(data) {
+        // We have to mutate the data object to get data registered and cached
+        data.prevExports = currentExports;
+      }
+    );
+    module.hot.accept(
+      /**
+       * An error handler to allow self-recovering behaviours.
+       * @param {Error} error An error occurred during evaluation of a module.
+       * @returns {void}
+       */
+      function hotErrorHandler(error) {
+        if (
+          typeof __react_refresh_error_overlay__ !== 'undefined' &&
+          __react_refresh_error_overlay__
+        ) {
+          __react_refresh_error_overlay__.handleRuntimeError(error);
+        }
+
+        if (typeof __react_refresh_test__ !== 'undefined' && __react_refresh_test__) {
+          if (window.onHotAcceptError) {
+            window.onHotAcceptError(error.message);
+          }
+        }
+
+        __webpack_require__.c[module.id].hot.accept(hotErrorHandler);
+      }
+    );
+
+    if (isHotUpdate) {
+      if (
+        __react_refresh_utils__.isReactRefreshBoundary(prevExports) &&
+        __react_refresh_utils__.shouldInvalidateReactRefreshBoundary(prevExports, currentExports)
+      ) {
+        module.hot.invalidate();
+      } else {
+        __react_refresh_utils__.enqueueUpdate(
+          /**
+           * A function to dismiss the error overlay after performing React refresh.
+           * @returns {void}
+           */
+          function updateCallback() {
+            if (
+              typeof __react_refresh_error_overlay__ !== 'undefined' &&
+              __react_refresh_error_overlay__
+            ) {
+              __react_refresh_error_overlay__.clearRuntimeErrors();
+            }
+          }
+        );
+      }
+    }
+  } else {
+    if (isHotUpdate && __react_refresh_utils__.isReactRefreshBoundary(prevExports)) {
+      module.hot.invalidate();
+    }
+  }
+}
+
+/***/ }),
+
+/***/ "./hooks/useBot.ts":
+/*!*************************!*\
+  !*** ./hooks/useBot.ts ***!
+  \*************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var _model_commands__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/model/commands */ "./model/commands.ts");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/constants */ "./constants.ts");
+/* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
+/* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ../node_modules/react-refresh/runtime.js */ "../node_modules/react-refresh/runtime.js");
+__webpack_require__.$Refresh$.setup(module.id);
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var useBot = function useBot() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isStart = _useState2[0],
+      setIsStart = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined),
+      _useState4 = _slicedToArray(_useState3, 2),
+      command = _useState4[0],
+      setCommand = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined),
+      _useState6 = _slicedToArray(_useState5, 2),
+      bodyMessage = _useState6[0],
+      setBodyMessage = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined),
+      _useState8 = _slicedToArray(_useState7, 2),
+      numbers = _useState8[0],
+      setNumbers = _useState8[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (command) {
+      var parseCommand = (0,_model_commands__WEBPACK_IMPORTED_MODULE_1__.commandParser)(command);
+      var args = parseCommand.args;
+      var functionWrap = (0,_model_commands__WEBPACK_IMPORTED_MODULE_1__.errorsMessageWrap)(isStart, numbers, setBodyMessage, setNumbers);
+
+      switch (parseCommand.command) {
+        case _constants__WEBPACK_IMPORTED_MODULE_2__.START_WORD_COMMAND:
+          (0,_model_commands__WEBPACK_IMPORTED_MODULE_1__.commandStart)(isStart, setIsStart, setBodyMessage);
+          break;
+
+        case _constants__WEBPACK_IMPORTED_MODULE_2__.STOP_WORD_COMMAND:
+          functionWrap(function () {
+            (0,_model_commands__WEBPACK_IMPORTED_MODULE_1__.commandStop)(setIsStart, setBodyMessage);
+          });
+          break;
+
+        case _constants__WEBPACK_IMPORTED_MODULE_2__.NAME_WORD_COMMAND:
+          functionWrap(function () {
+            (0,_model_commands__WEBPACK_IMPORTED_MODULE_1__.commandName)(args[0], setBodyMessage);
+          });
+          break;
+
+        case _constants__WEBPACK_IMPORTED_MODULE_2__.NUMBER_WORD_COMMAND:
+          functionWrap(function () {
+            (0,_model_commands__WEBPACK_IMPORTED_MODULE_1__.commandNumber)(args[0], args[1], setBodyMessage, setNumbers);
+          });
+          break;
+
+        case _constants__WEBPACK_IMPORTED_MODULE_2__.MATH_WORDS_COMMANDS[0]:
+        case _constants__WEBPACK_IMPORTED_MODULE_2__.MATH_WORDS_COMMANDS[1]:
+        case _constants__WEBPACK_IMPORTED_MODULE_2__.MATH_WORDS_COMMANDS[2]:
+        case _constants__WEBPACK_IMPORTED_MODULE_2__.MATH_WORDS_COMMANDS[3]:
+          (0,_model_commands__WEBPACK_IMPORTED_MODULE_1__.commandMathAction)(numbers, isStart, parseCommand.command, setBodyMessage, setNumbers);
+          break;
+
+        default:
+          functionWrap(function () {
+            (0,_model_commands__WEBPACK_IMPORTED_MODULE_1__.notStart)(setBodyMessage);
+          });
+          break;
+      }
+    }
+  }, [command]);
+  return {
+    bodyMessage: bodyMessage,
+    setCommand: setCommand,
+    setBodyMessage: setBodyMessage
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useBot);
+
+const currentExports = __react_refresh_utils__.getModuleExports(module.id);
+__react_refresh_utils__.registerExportsForReactRefresh(currentExports, module.id);
+
+if (true) {
+  const isHotUpdate = !!module.hot.data;
+  const prevExports = isHotUpdate ? module.hot.data.prevExports : null;
+
+  if (__react_refresh_utils__.isReactRefreshBoundary(currentExports)) {
+    module.hot.dispose(
+      /**
+       * A callback to performs a full refresh if React has unrecoverable errors,
+       * and also caches the to-be-disposed module.
+       * @param {*} data A hot module data object from Webpack HMR.
+       * @returns {void}
+       */
+      function hotDisposeCallback(data) {
+        // We have to mutate the data object to get data registered and cached
+        data.prevExports = currentExports;
+      }
+    );
+    module.hot.accept(
+      /**
+       * An error handler to allow self-recovering behaviours.
+       * @param {Error} error An error occurred during evaluation of a module.
+       * @returns {void}
+       */
+      function hotErrorHandler(error) {
+        if (
+          typeof __react_refresh_error_overlay__ !== 'undefined' &&
+          __react_refresh_error_overlay__
+        ) {
+          __react_refresh_error_overlay__.handleRuntimeError(error);
+        }
+
+        if (typeof __react_refresh_test__ !== 'undefined' && __react_refresh_test__) {
+          if (window.onHotAcceptError) {
+            window.onHotAcceptError(error.message);
+          }
+        }
+
+        __webpack_require__.c[module.id].hot.accept(hotErrorHandler);
+      }
+    );
+
+    if (isHotUpdate) {
+      if (
+        __react_refresh_utils__.isReactRefreshBoundary(prevExports) &&
+        __react_refresh_utils__.shouldInvalidateReactRefreshBoundary(prevExports, currentExports)
+      ) {
+        module.hot.invalidate();
+      } else {
+        __react_refresh_utils__.enqueueUpdate(
+          /**
+           * A function to dismiss the error overlay after performing React refresh.
+           * @returns {void}
+           */
+          function updateCallback() {
+            if (
+              typeof __react_refresh_error_overlay__ !== 'undefined' &&
+              __react_refresh_error_overlay__
+            ) {
+              __react_refresh_error_overlay__.clearRuntimeErrors();
+            }
+          }
+        );
+      }
+    }
+  } else {
+    if (isHotUpdate && __react_refresh_utils__.isReactRefreshBoundary(prevExports)) {
+      module.hot.invalidate();
+    }
+  }
+}
+
+/***/ }),
+
 /***/ "./hooks/useChat.ts":
 /*!**************************!*\
   !*** ./hooks/useChat.ts ***!
@@ -4190,6 +4483,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/types */ "./types.ts");
+/* harmony import */ var _useBot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useBot */ "./hooks/useBot.ts");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 /* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ../node_modules/react-refresh/runtime.js */ "../node_modules/react-refresh/runtime.js");
@@ -4217,38 +4511,39 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var CHAT_SAVE_LOCAL_STORAGE = 'CHAT_SAVE_LOCAL_STORAGE';
 
 var useChat = function useChat() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      newMessage = _useState2[0],
-      setNewMessage = _useState2[1];
+      messages = _useState2[0],
+      setMessages = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
-      messages = _useState4[0],
-      setMessages = _useState4[1];
+      inputText = _useState4[0],
+      setInputText = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      inputText = _useState6[0],
-      setInputText = _useState6[1];
+      isSend = _useState6[0],
+      setIsSend = _useState6[1];
 
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState8 = _slicedToArray(_useState7, 2),
-      isSend = _useState8[0],
-      setIsSend = _useState8[1];
+      isEntering = _useState8[0],
+      setIsEntering = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined),
       _useState10 = _slicedToArray(_useState9, 2),
-      isEntering = _useState10[0],
-      setIsEntering = _useState10[1];
+      timerId = _useState10[0],
+      setTimerId = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined),
-      _useState12 = _slicedToArray(_useState11, 2),
-      timerId = _useState12[0],
-      setTimerId = _useState12[1];
+  var _useBot = (0,_useBot__WEBPACK_IMPORTED_MODULE_2__.default)(),
+      bodyMessage = _useBot.bodyMessage,
+      setCommand = _useBot.setCommand,
+      setBodyMessage = _useBot.setBodyMessage;
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var json = localStorage.getItem(CHAT_SAVE_LOCAL_STORAGE);
@@ -4277,32 +4572,28 @@ var useChat = function useChat() {
     }
   }, [inputText]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var botAnswer = function botAnswer() {
-      switch (newMessage) {
-        default:
-          return 'Я не понимаю, введите другую команду!';
-      }
-    };
-
-    if (newMessage) {
-      var botMessage = {
-        type: _types__WEBPACK_IMPORTED_MODULE_1__.BOT_TYPE,
-        body: botAnswer()
-      };
-      setMessages([botMessage, newMessage].concat(_toConsumableArray(messages)));
-      setNewMessage(undefined);
-    }
-  }, [newMessage]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (isSend) {
-      setNewMessage({
+      var newMessage = {
         type: _types__WEBPACK_IMPORTED_MODULE_1__.USER_TYPE,
         body: inputText
-      });
+      };
       setIsSend(false);
       setInputText('');
+      setMessages([newMessage].concat(_toConsumableArray(messages)));
+      setCommand(inputText);
     }
   }, [isSend]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (bodyMessage) {
+      var newBotMessage = {
+        type: _types__WEBPACK_IMPORTED_MODULE_1__.BOT_TYPE,
+        body: bodyMessage
+      };
+      setMessages([newBotMessage].concat(_toConsumableArray(messages)));
+      setCommand(undefined);
+      setBodyMessage(undefined);
+    }
+  }, [bodyMessage]);
   return {
     setIsSend: setIsSend,
     inputText: inputText,
@@ -4313,6 +4604,176 @@ var useChat = function useChat() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useChat);
+
+const currentExports = __react_refresh_utils__.getModuleExports(module.id);
+__react_refresh_utils__.registerExportsForReactRefresh(currentExports, module.id);
+
+if (true) {
+  const isHotUpdate = !!module.hot.data;
+  const prevExports = isHotUpdate ? module.hot.data.prevExports : null;
+
+  if (__react_refresh_utils__.isReactRefreshBoundary(currentExports)) {
+    module.hot.dispose(
+      /**
+       * A callback to performs a full refresh if React has unrecoverable errors,
+       * and also caches the to-be-disposed module.
+       * @param {*} data A hot module data object from Webpack HMR.
+       * @returns {void}
+       */
+      function hotDisposeCallback(data) {
+        // We have to mutate the data object to get data registered and cached
+        data.prevExports = currentExports;
+      }
+    );
+    module.hot.accept(
+      /**
+       * An error handler to allow self-recovering behaviours.
+       * @param {Error} error An error occurred during evaluation of a module.
+       * @returns {void}
+       */
+      function hotErrorHandler(error) {
+        if (
+          typeof __react_refresh_error_overlay__ !== 'undefined' &&
+          __react_refresh_error_overlay__
+        ) {
+          __react_refresh_error_overlay__.handleRuntimeError(error);
+        }
+
+        if (typeof __react_refresh_test__ !== 'undefined' && __react_refresh_test__) {
+          if (window.onHotAcceptError) {
+            window.onHotAcceptError(error.message);
+          }
+        }
+
+        __webpack_require__.c[module.id].hot.accept(hotErrorHandler);
+      }
+    );
+
+    if (isHotUpdate) {
+      if (
+        __react_refresh_utils__.isReactRefreshBoundary(prevExports) &&
+        __react_refresh_utils__.shouldInvalidateReactRefreshBoundary(prevExports, currentExports)
+      ) {
+        module.hot.invalidate();
+      } else {
+        __react_refresh_utils__.enqueueUpdate(
+          /**
+           * A function to dismiss the error overlay after performing React refresh.
+           * @returns {void}
+           */
+          function updateCallback() {
+            if (
+              typeof __react_refresh_error_overlay__ !== 'undefined' &&
+              __react_refresh_error_overlay__
+            ) {
+              __react_refresh_error_overlay__.clearRuntimeErrors();
+            }
+          }
+        );
+      }
+    }
+  } else {
+    if (isHotUpdate && __react_refresh_utils__.isReactRefreshBoundary(prevExports)) {
+      module.hot.invalidate();
+    }
+  }
+}
+
+/***/ }),
+
+/***/ "./model/commands.ts":
+/*!***************************!*\
+  !*** ./model/commands.ts ***!
+  \***************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "commandParser": () => (/* binding */ commandParser),
+/* harmony export */   "errorsMessageWrap": () => (/* binding */ errorsMessageWrap),
+/* harmony export */   "commandStart": () => (/* binding */ commandStart),
+/* harmony export */   "commandStop": () => (/* binding */ commandStop),
+/* harmony export */   "commandName": () => (/* binding */ commandName),
+/* harmony export */   "commandNumber": () => (/* binding */ commandNumber),
+/* harmony export */   "commandMathAction": () => (/* binding */ commandMathAction),
+/* harmony export */   "notStart": () => (/* binding */ notStart)
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/constants */ "./constants.ts");
+/* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
+/* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "../node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ../node_modules/react-refresh/runtime.js */ "../node_modules/react-refresh/runtime.js");
+__webpack_require__.$Refresh$.setup(module.id);
+
+ // парсинг команды
+
+var commandParser = function commandParser(fullCommand) {
+  var words = fullCommand.split(' ');
+  return {
+    command: words[0],
+    args: words.slice(1)
+  };
+}; // оберточная функция ошибок
+
+var errorsMessageWrap = function errorsMessageWrap(isStart, numbers, setBodyMessage, setNumbers) {
+  return function (commandFunction) {
+    if (isStart && !numbers) {
+      commandFunction();
+    } else if (numbers) {
+      setBodyMessage(_constants__WEBPACK_IMPORTED_MODULE_0__.notMathCommand);
+      setNumbers(undefined);
+    } else {
+      setBodyMessage(_constants__WEBPACK_IMPORTED_MODULE_0__.notStartChat);
+    }
+  };
+}; // команда /start
+
+var commandStart = function commandStart(isStart, setIsStart, setBodyMessage) {
+  if (!isStart) {
+    setIsStart(true);
+    setBodyMessage('Привет, меня зовут Чат-бот, а как зовут тебя?');
+  } else {
+    setBodyMessage('Вы уже начали чат');
+  }
+}; // команда /stop
+
+var commandStop = function commandStop(setIsStart, setBodyMessage) {
+  setIsStart(false);
+  setBodyMessage('Всего доброго, если хочешь поговорить пиши /start');
+}; // команда /name
+
+var commandName = function commandName(name, setBodyMessage) {
+  var message = 'Привет ' + name + ', приятно познакомится. Я умею считать, введи числа которые надо посчитать';
+  setBodyMessage(message);
+}; //команда /number
+
+var commandNumber = function commandNumber(firstNumberString, secondNumberString, setBodyMessage, setNumbers) {
+  var first = parseInt(firstNumberString, 10);
+  var second = parseInt(secondNumberString, 10);
+  setNumbers({
+    first: first,
+    second: second
+  });
+  setBodyMessage('Введите одну из следующих команд: -, +, *, /');
+}; // команды для мат действий
+
+var commandMathAction = function commandMathAction(numbers, isStart, command, setBodyMessage, setNumbers) {
+  if (isStart) {
+    if (numbers) {
+      var actionMath = "".concat(numbers.first, " ").concat(command, " ").concat(numbers.second);
+      setBodyMessage(String(eval(actionMath)));
+      setNumbers(undefined);
+    } else {
+      setBodyMessage(_constants__WEBPACK_IMPORTED_MODULE_0__.notKnowCommandBody);
+    }
+  } else if (!numbers) {
+    setBodyMessage(_constants__WEBPACK_IMPORTED_MODULE_0__.notStartChat);
+  }
+}; // для не запланированного функционала
+
+var notStart = function notStart(setBodyMessage) {
+  setBodyMessage(_constants__WEBPACK_IMPORTED_MODULE_0__.notKnowCommandBody);
+};
 
 const currentExports = __react_refresh_utils__.getModuleExports(module.id);
 __react_refresh_utils__.registerExportsForReactRefresh(currentExports, module.id);
@@ -37426,7 +37887,7 @@ module.exports = function (list, options) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("b1a5944c7af44193d3e2")
+/******/ 		__webpack_require__.h = () => ("75dde175d1dd0f4c54b6")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
