@@ -71,6 +71,7 @@ const useBot = () => {
           });
           break;
       }
+      setCommand(undefined);
     }
   }, [command]);
 

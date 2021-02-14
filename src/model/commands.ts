@@ -130,9 +130,20 @@ export const commandWeather = async (
     return positionRes;
   };
 
+  const getWeather = async (latitude: number, longitude: number) => {
+    try {
+      const req = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&lang=ru&appid=1168febae541d36c0213f5b48ce1e406`
+      );
+      const body = await req.json();
+      setBodyMessage(body['weather'][0]['description']);
+    } catch (err) {
+      setBodyMessage('Произошла ошибка с получением данных');
+    }
+  };
   const position = await getPosition();
   if (position) {
-    setBodyMessage(`${position.latitude} ${position.longitude}`);
+    getWeather(position.latitude, position.longitude);
   }
 };
 
