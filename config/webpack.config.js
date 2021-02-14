@@ -27,7 +27,7 @@ module.exports = {
   mode: isDevelopment ? 'development' : 'production',
 
   entry: {
-    client: ['./index.tsx']
+    client: ['babel-polyfill', './index.tsx']
   },
 
   output: {

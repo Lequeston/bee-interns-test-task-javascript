@@ -1,4 +1,4 @@
-import { CommandsType, NumberMathTypes } from '@/types';
+import { CommandsType, NumberMathTypes, PositionType } from '@/types';
 
 import { notKnowCommandBody, notMathCommand, notStartChat } from '@/constants';
 
@@ -98,6 +98,41 @@ export const commandMathAction = (
     }
   } else if (!numbers) {
     setBodyMessage(notStartChat);
+  }
+};
+
+export const commandWeather = async (
+  setBodyMessage: React.Dispatch<React.SetStateAction<string | undefined>>
+) => {
+  const getPosition = async (): Promise<PositionType | undefined> => {
+    let positionRes: PositionType | undefined = undefined;
+
+    const getPositionPromise = (options?: PositionOptions): Promise<GeolocationPosition> => {
+      return new Promise((resolve, reject) =>
+        navigator.geolocation.getCurrentPosition(resolve, reject, options)
+      );
+    };
+
+    if (navigator.geolocation) {
+      try {
+        const position = await getPositionPromise();
+        positionRes = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        };
+      } catch (err) {
+        setBodyMessage('При определении геопозиции произошла ошибка');
+      }
+    } else {
+      setBodyMessage('Включите пожалуйста геолокацию');
+    }
+
+    return positionRes;
+  };
+
+  const position = await getPosition();
+  if (position) {
+    setBodyMessage(`${position.latitude} ${position.longitude}`);
   }
 };
 
