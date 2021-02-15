@@ -122,6 +122,7 @@ export const commandWeather = async (
         };
       } catch (err) {
         setBodyMessage('При определении геопозиции произошла ошибка');
+        console.error(err);
       }
     } else {
       setBodyMessage('Включите пожалуйста геолокацию');
@@ -133,12 +134,13 @@ export const commandWeather = async (
   const getWeather = async (latitude: number, longitude: number) => {
     try {
       const req = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&lang=ru&appid=1168febae541d36c0213f5b48ce1e406`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&cnt=10&lang=ru&appid=1168febae541d36c0213f5b48ce1e406`
       );
       const body = await req.json();
-      setBodyMessage(body['weather'][0]['description']);
+      setBodyMessage(body['list'][9]['weather'][0]['description']);
     } catch (err) {
       setBodyMessage('Произошла ошибка с получением данных');
+      console.error(err);
     }
   };
   const position = await getPosition();
