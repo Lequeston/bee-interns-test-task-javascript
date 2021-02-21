@@ -4782,7 +4782,7 @@ var commandWeather = /*#__PURE__*/function () {
                         };
 
                         if (!navigator.geolocation) {
-                          _context.next = 15;
+                          _context.next = 16;
                           break;
                         }
 
@@ -4796,25 +4796,26 @@ var commandWeather = /*#__PURE__*/function () {
                           latitude: _position.coords.latitude,
                           longitude: _position.coords.longitude
                         };
-                        _context.next = 13;
+                        _context.next = 14;
                         break;
 
                       case 10:
                         _context.prev = 10;
                         _context.t0 = _context["catch"](3);
                         setBodyMessage('При определении геопозиции произошла ошибка');
+                        console.error(_context.t0);
 
-                      case 13:
-                        _context.next = 16;
+                      case 14:
+                        _context.next = 17;
                         break;
 
-                      case 15:
+                      case 16:
                         setBodyMessage('Включите пожалуйста геолокацию');
 
-                      case 16:
+                      case 17:
                         return _context.abrupt("return", positionRes);
 
-                      case 17:
+                      case 18:
                       case "end":
                         return _context.stop();
                     }
@@ -4836,7 +4837,7 @@ var commandWeather = /*#__PURE__*/function () {
                       case 0:
                         _context2.prev = 0;
                         _context2.next = 3;
-                        return fetch("https://api.openweathermap.org/data/2.5/weather?lat=".concat(latitude, "&lon=").concat(longitude, "&lang=ru&appid=1168febae541d36c0213f5b48ce1e406"));
+                        return fetch("https://api.openweathermap.org/data/2.5/forecast?lat=".concat(latitude, "&lon=").concat(longitude, "&cnt=10&lang=ru&appid=1168febae541d36c0213f5b48ce1e406"));
 
                       case 3:
                         req = _context2.sent;
@@ -4845,16 +4846,17 @@ var commandWeather = /*#__PURE__*/function () {
 
                       case 6:
                         body = _context2.sent;
-                        setBodyMessage(body['weather'][0]['description']);
-                        _context2.next = 13;
+                        setBodyMessage(body['list'][9]['weather'][0]['description']);
+                        _context2.next = 14;
                         break;
 
                       case 10:
                         _context2.prev = 10;
                         _context2.t0 = _context2["catch"](0);
                         setBodyMessage('Произошла ошибка с получением данных');
+                        console.error(_context2.t0);
 
-                      case 13:
+                      case 14:
                       case "end":
                         return _context2.stop();
                     }
@@ -16295,7 +16297,7 @@ module.exports = function(obj, sep, eq, name) {
       } else {
         return ks + encodeURIComponent(stringifyPrimitive(obj[k]));
       }
-    }).join(sep);
+    }).filter(Boolean).join(sep);
 
   }
 
@@ -48690,7 +48692,7 @@ module.exports = function (list, options) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "fa78df88a0c58771c22f"; }
+/******/ 		__webpack_require__.h = function() { return "5b1b1d0fbb2feae38172"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -49680,13 +49682,15 @@ module.exports = function (list, options) {
 /******/ 	}();
 /******/ 	
 /************************************************************************/
+/******/ 	
 /******/ 	// module cache are used so entry inlining is disabled
 /******/ 	// startup
-/******/ 	// Load entry module
+/******/ 	// Load entry module and return exports
 /******/ 	__webpack_require__("../node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ReactRefreshEntry.js");
 /******/ 	__webpack_require__("../node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js");
 /******/ 	__webpack_require__("../node_modules/babel-polyfill/lib/index.js");
-/******/ 	__webpack_require__("./index.tsx");
+/******/ 	var __webpack_exports__ = __webpack_require__("./index.tsx");
+/******/ 	
 /******/ })()
 ;
 //# sourceMappingURL=client.js.map
