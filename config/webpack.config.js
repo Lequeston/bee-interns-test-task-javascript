@@ -9,12 +9,12 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
-require('dotenv').config()
+require('dotenv').config();
 
 const ROOT_PATH = path.resolve(__dirname, '..');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
-const isBuild = process.env.MODE_ENV === 'build'
+const isBuild = process.env.MODE_ENV === 'build';
 const isProduction = !isDevelopment;
 const bundlePath = process.env.BUNDLE_PATH || 'dist';
 const homePage = process.env.HOME_PAGE || '/';
