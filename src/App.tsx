@@ -8,7 +8,7 @@ import useChat from '@/hooks/useChat';
 
 import './App.scss';
 
-const App: React.FC = () => {
+const App = (): JSX.Element => {
   const { setIsSend, inputText, setInputText, messages, isEntering } = useChat();
 
   return (
