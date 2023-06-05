@@ -19,7 +19,8 @@ const isProduction = !isDevelopment;
 const bundlePath = process.env.BUNDLE_PATH || 'dist';
 const homePage = process.env.HOME_PAGE || '/';
 
-const filename = extension => isProduction ? `[name].[hash].${extension}` : `[name].${extension}`;
+const filename = (extension) =>
+  isProduction ? `[name].[hash].${extension}` : `[name].${extension}`;
 
 module.exports = {
   context: path.resolve(ROOT_PATH, 'src'),
@@ -41,9 +42,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [
-      '.js', '.ts', '.tsx', '.jsx'
-    ],
+    extensions: ['.js', '.ts', '.tsx', '.jsx'],
     alias: {
       '@': path.resolve(ROOT_PATH, 'src'),
       '@components': path.resolve(ROOT_PATH, 'src', 'components'),
@@ -57,9 +56,10 @@ module.exports = {
   plugins: [
     isDevelopment && new webpack.HotModuleReplacementPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
-    isProduction && new MiniCSSExtractPlugin({
-      filename: filename('css')
-    }),
+    isProduction &&
+      new MiniCSSExtractPlugin({
+        filename: filename('css')
+      }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './index.html',
@@ -76,12 +76,12 @@ module.exports = {
         extractComments: false,
         terserOptions: {
           format: {
-            comments: false,
+            comments: false
           },
           compress: {
-            drop_console: true,
-          },
-	      }
+            drop_console: true
+          }
+        }
       }),
       new CssMinimizerPlugin()
     ]
@@ -93,27 +93,24 @@ module.exports = {
         test: /\.less$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: 'style-loader'
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader'
           },
           {
-            loader: "less-loader",
+            loader: 'less-loader',
             options: {
               lessOptions: {
-                strictMath: true,
-              },
-            },
-          },
-        ],
+                strictMath: true
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
-        use: [
-          isDevelopment ? 'style-loader' : MiniCSSExtractPlugin.loader,
-          'css-loader',
-        ],
+        use: [isDevelopment ? 'style-loader' : MiniCSSExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.s[ac]ss$/,
@@ -121,7 +118,7 @@ module.exports = {
           isDevelopment ? 'style-loader' : MiniCSSExtractPlugin.loader,
           'css-loader',
           'sass-loader'
-        ],
+        ]
       },
       {
         test: /\.(png|jpg|woff|woff2|eot|ttf|otf|webp)$/,
@@ -130,14 +127,14 @@ module.exports = {
             loader: 'file-loader',
             options: {
               outputPath: 'media',
-              name: filename('ext'),
-            },
-          },
-        ],
+              name: filename('ext')
+            }
+          }
+        ]
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack', 'file-loader'],
+        use: ['@svgr/webpack', 'file-loader']
       },
       {
         test: /\.tsx$/,
@@ -145,14 +142,8 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-              '@babel/preset-typescript'
-            ],
-            plugins: [
-              isDevelopment && 'react-refresh/babel'
-            ].filter(Boolean)
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+            plugins: [isDevelopment && 'react-refresh/babel'].filter(Boolean)
           }
         }
       },
@@ -162,10 +153,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-typescript'
-            ]
+            presets: ['@babel/preset-env', '@babel/preset-typescript']
           }
         }
       },
@@ -181,4 +169,4 @@ module.exports = {
       }
     ]
   }
-}
+};
