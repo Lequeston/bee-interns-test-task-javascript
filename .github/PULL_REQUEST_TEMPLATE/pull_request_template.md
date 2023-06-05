@@ -1,2 +1,3 @@
-тест
-тест2
+- [ ] Have you done x?
+- [ ] Have you done y?
+- [ ] Have you done z?
